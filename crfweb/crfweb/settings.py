@@ -78,7 +78,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'USER': 'postgres',
-        'NAME': 'crf_master_gdb',
+        'NAME': 'crf_master_gdb_v2',
         'PASSWORD' : '1885$z3',
         'HOST' : 'localhost',
         'PORT': '5432'
