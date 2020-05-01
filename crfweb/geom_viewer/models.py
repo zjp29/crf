@@ -9,14 +9,14 @@ from django.contrib.gis.db import models
 
 
 class NwicCcdCrf(models.Model):
-    pnumber = models.CharField(primary_key=True, max_length=11)
+    pnumber = models.CharField(max_length=11)
     status = models.TextField(blank=True, null=True)
     disclosure = models.TextField(blank=True, null=True)
     shp = models.BooleanField(blank=True, null=True)
     pdf = models.BooleanField(blank=True, null=True)
     pdf_path = models.TextField(blank=True, null=True)
     trinomial = models.TextField(blank=True, null=True)
-    id = models.AutoField()
+    id = models.AutoField(primary_key=True)
 
     class Meta:
         managed = False
