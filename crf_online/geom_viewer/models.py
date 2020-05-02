@@ -19,291 +19,7 @@ class NwicCcdCrf(models.Model):
     id = models.AutoField(primary_key=True)
 
     class Meta:
-        managed = False
         db_table = 'nwic_ccd_crf'
-
-
-class ReportAprxloc(models.Model):
-    geom = models.MultiPolygonField(srid=3310, blank=True, null=True)
-    docco = models.IntegerField(db_column='DocCo', blank=True, null=True)  # Field name made lowercase.
-    docno = models.IntegerField(db_column='DocNo', blank=True, null=True)  # Field name made lowercase.
-    label = models.CharField(db_column='Label', max_length=8, blank=True, null=True)  # Field name made lowercase.
-    otherid = models.CharField(db_column='OtherID', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    docsource = models.CharField(db_column='DocSource', max_length=25, blank=True, null=True)  # Field name made lowercase.
-    digsource = models.CharField(db_column='DigSource', max_length=25, blank=True, null=True)  # Field name made lowercase.
-    reportnum = models.ForeignKey('Tblinventory', models.DO_NOTHING, db_column='ReportNum', blank=True, null=True)  # Field name made lowercase.
-    notes = models.CharField(db_column='Notes', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    confidential = models.CharField(db_column='Confidential', max_length=3, blank=True, null=True)  # Field name made lowercase.
-    hyperlink = models.CharField(db_column='Hyperlink', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    shape_length = models.FloatField(db_column='SHAPE_Length', blank=True, null=True)  # Field name made lowercase.
-    shape_area = models.FloatField(db_column='SHAPE_Area', blank=True, null=True)  # Field name made lowercase.
-    digorg = models.CharField(db_column='DigOrg', max_length=255, blank=True, null=True)  # Field name made lowercase.
-
-    class Meta:
-        managed = False
-        db_table = 'report_aprxloc'
-
-
-class ReportCfmou(models.Model):
-    geom = models.MultiPolygonField(srid=3310, blank=True, null=True)
-    docco = models.IntegerField(db_column='DocCo', blank=True, null=True)  # Field name made lowercase.
-    docno = models.IntegerField(db_column='DocNo', blank=True, null=True)  # Field name made lowercase.
-    label = models.CharField(db_column='Label', max_length=8, blank=True, null=True)  # Field name made lowercase.
-    otherid = models.CharField(db_column='OtherID', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    docsource = models.CharField(db_column='DocSource', max_length=25, blank=True, null=True)  # Field name made lowercase.
-    digsource = models.CharField(db_column='DigSource', max_length=25, blank=True, null=True)  # Field name made lowercase.
-    reportnum = models.ForeignKey('Tblinventory', models.DO_NOTHING, db_column='ReportNum', blank=True, null=True)  # Field name made lowercase.
-    notes = models.CharField(db_column='Notes', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    hyperlink = models.CharField(db_column='Hyperlink', max_length=250, blank=True, null=True)  # Field name made lowercase.
-    shape_length = models.FloatField(db_column='SHAPE_Length', blank=True, null=True)  # Field name made lowercase.
-    shape_area = models.FloatField(db_column='SHAPE_Area', blank=True, null=True)  # Field name made lowercase.
-    digorg = models.CharField(db_column='DigOrg', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    confidential = models.CharField(db_column='Confidential', max_length=3, blank=True, null=True)  # Field name made lowercase.
-
-    class Meta:
-        managed = False
-        db_table = 'report_cfmou'
-
-
-class ReportLines(models.Model):
-    geom = models.MultiLineStringField(srid=3310, blank=True, null=True)
-    docco = models.IntegerField(db_column='DocCo', blank=True, null=True)  # Field name made lowercase.
-    docno = models.IntegerField(db_column='DocNo', blank=True, null=True)  # Field name made lowercase.
-    label = models.CharField(db_column='Label', max_length=8, blank=True, null=True)  # Field name made lowercase.
-    otherid = models.CharField(db_column='OtherID', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    docsource = models.CharField(db_column='DocSource', max_length=25, blank=True, null=True)  # Field name made lowercase.
-    digsource = models.CharField(db_column='DigSource', max_length=25, blank=True, null=True)  # Field name made lowercase.
-    reportnum = models.ForeignKey('Tblinventory', models.DO_NOTHING, db_column='ReportNum', blank=True, null=True)  # Field name made lowercase.
-    notes = models.CharField(db_column='Notes', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    hyperlink = models.CharField(db_column='Hyperlink', max_length=250, blank=True, null=True)  # Field name made lowercase.
-    shape_length = models.FloatField(db_column='SHAPE_Length', blank=True, null=True)  # Field name made lowercase.
-    digorg = models.CharField(db_column='DigOrg', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    confidential = models.CharField(db_column='Confidential', max_length=3, blank=True, null=True)  # Field name made lowercase.
-
-    class Meta:
-        managed = False
-        db_table = 'report_lines'
-
-
-class ReportOther(models.Model):
-    geom = models.MultiPolygonField(srid=3310, blank=True, null=True)
-    docco = models.IntegerField(db_column='DocCo', blank=True, null=True)  # Field name made lowercase.
-    docno = models.IntegerField(db_column='DocNo', blank=True, null=True)  # Field name made lowercase.
-    label = models.CharField(db_column='Label', max_length=8, blank=True, null=True)  # Field name made lowercase.
-    otherid = models.CharField(db_column='OtherID', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    docsource = models.CharField(db_column='DocSource', max_length=25, blank=True, null=True)  # Field name made lowercase.
-    digsource = models.CharField(db_column='DigSource', max_length=25, blank=True, null=True)  # Field name made lowercase.
-    reportnum = models.ForeignKey('Tblinventory', models.DO_NOTHING, db_column='ReportNum', blank=True, null=True)  # Field name made lowercase.
-    notes = models.CharField(db_column='Notes', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    hyperlink = models.CharField(db_column='Hyperlink', max_length=250, blank=True, null=True)  # Field name made lowercase.
-    shape_length = models.FloatField(db_column='Shape_Length', blank=True, null=True)  # Field name made lowercase.
-    shape_area = models.FloatField(db_column='Shape_Area', blank=True, null=True)  # Field name made lowercase.
-    digorg = models.CharField(db_column='DigOrg', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    confidential = models.CharField(db_column='Confidential', max_length=3, blank=True, null=True)  # Field name made lowercase.
-
-    class Meta:
-        managed = False
-        db_table = 'report_other'
-
-
-class ReportPoints(models.Model):
-    geom = models.PointField(srid=3310, blank=True, null=True)
-    docco = models.IntegerField(db_column='DocCo', blank=True, null=True)  # Field name made lowercase.
-    docno = models.IntegerField(db_column='DocNo', blank=True, null=True)  # Field name made lowercase.
-    label = models.CharField(db_column='Label', max_length=8, blank=True, null=True)  # Field name made lowercase.
-    otherid = models.CharField(db_column='OtherID', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    docsource = models.CharField(db_column='DocSource', max_length=25, blank=True, null=True)  # Field name made lowercase.
-    digsource = models.CharField(db_column='DigSource', max_length=25, blank=True, null=True)  # Field name made lowercase.
-    reportnum = models.ForeignKey('Tblinventory', models.DO_NOTHING, db_column='ReportNum', blank=True, null=True)  # Field name made lowercase.
-    notes = models.CharField(db_column='Notes', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    hyperlink = models.CharField(db_column='Hyperlink', max_length=250, blank=True, null=True)  # Field name made lowercase.
-    digorg = models.CharField(db_column='DigOrg', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    confidential = models.CharField(db_column='Confidential', max_length=3, blank=True, null=True)  # Field name made lowercase.
-
-    class Meta:
-        managed = False
-        db_table = 'report_points'
-
-
-class ReportPolys(models.Model):
-    geom = models.MultiPolygonField(srid=3310, blank=True, null=True)
-    docco = models.IntegerField(db_column='DocCo', blank=True, null=True)  # Field name made lowercase.
-    docno = models.IntegerField(db_column='DocNo', blank=True, null=True)  # Field name made lowercase.
-    label = models.CharField(db_column='Label', max_length=8, blank=True, null=True)  # Field name made lowercase.
-    otherid = models.CharField(db_column='OtherID', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    docsource = models.CharField(db_column='DocSource', max_length=25, blank=True, null=True)  # Field name made lowercase.
-    digsource = models.CharField(db_column='DigSource', max_length=25, blank=True, null=True)  # Field name made lowercase.
-    reportnum = models.ForeignKey('Tblinventory', models.DO_NOTHING, db_column='ReportNum', blank=True, null=True)  # Field name made lowercase.
-    notes = models.CharField(db_column='Notes', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    hyperlink = models.CharField(db_column='Hyperlink', max_length=250, blank=True, null=True)  # Field name made lowercase.
-    shape_length = models.FloatField(db_column='Shape_Length', blank=True, null=True)  # Field name made lowercase.
-    shape_area = models.FloatField(db_column='Shape_Area', blank=True, null=True)  # Field name made lowercase.
-    digorg = models.CharField(db_column='DigOrg', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    confidential = models.CharField(db_column='Confidential', max_length=3, blank=True, null=True)  # Field name made lowercase.
-
-    class Meta:
-        managed = False
-        db_table = 'report_polys'
-
-
-class ReportRestricted(models.Model):
-    geom = models.MultiPolygonField(srid=3310, blank=True, null=True)
-    docco = models.IntegerField(db_column='DocCo', blank=True, null=True)  # Field name made lowercase.
-    docno = models.IntegerField(db_column='DocNo', blank=True, null=True)  # Field name made lowercase.
-    label = models.CharField(db_column='Label', max_length=8, blank=True, null=True)  # Field name made lowercase.
-    otherid = models.CharField(db_column='OtherID', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    docsource = models.CharField(db_column='DocSource', max_length=25, blank=True, null=True)  # Field name made lowercase.
-    digsource = models.CharField(db_column='DigSource', max_length=25, blank=True, null=True)  # Field name made lowercase.
-    reportnum = models.ForeignKey('Tblinventory', models.DO_NOTHING, db_column='ReportNum', blank=True, null=True)  # Field name made lowercase.
-    notes = models.CharField(db_column='Notes', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    hyperlink = models.CharField(db_column='Hyperlink', max_length=250, blank=True, null=True)  # Field name made lowercase.
-    shape_length = models.FloatField(db_column='SHAPE_Length', blank=True, null=True)  # Field name made lowercase.
-    shape_area = models.FloatField(db_column='SHAPE_Area', blank=True, null=True)  # Field name made lowercase.
-    digorg = models.CharField(db_column='DigOrg', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    confidential = models.CharField(db_column='Confidential', max_length=3, blank=True, null=True)  # Field name made lowercase.
-
-    class Meta:
-        managed = False
-        db_table = 'report_restricted'
-
-
-class ResourceAprxloc(models.Model):
-    geom = models.MultiPolygonField(srid=3310, blank=True, null=True)
-    primco = models.IntegerField(db_column='PrimCo', blank=True, null=True)  # Field name made lowercase.
-    primno = models.IntegerField(db_column='PrimNo', blank=True, null=True)  # Field name made lowercase.
-    trinno = models.IntegerField(db_column='TrinNo', blank=True, null=True)  # Field name made lowercase.
-    label = models.ForeignKey(NwicCcdCrf, models.DO_NOTHING, db_column='Label', blank=True, null=True)  # Field name made lowercase.
-    otherid = models.CharField(db_column='OtherID', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    docsource = models.CharField(db_column='DocSource', max_length=1, blank=True, null=True)  # Field name made lowercase.
-    digsource = models.CharField(db_column='DigSource', max_length=1, blank=True, null=True)  # Field name made lowercase.
-    trinomial = models.CharField(db_column='Trinomial', max_length=11, blank=True, null=True)  # Field name made lowercase.
-    notes = models.CharField(db_column='Notes', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    hyperlink = models.CharField(db_column='Hyperlink', max_length=250, blank=True, null=True)  # Field name made lowercase.
-    shape_length = models.FloatField(db_column='SHAPE_Length', blank=True, null=True)  # Field name made lowercase.
-    shape_area = models.FloatField(db_column='SHAPE_Area', blank=True, null=True)  # Field name made lowercase.
-    digorg = models.CharField(db_column='DigOrg', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    confidential = models.CharField(db_column='Confidential', max_length=3, blank=True, null=True)  # Field name made lowercase.
-
-    class Meta:
-        managed = False
-        db_table = 'resource_aprxloc'
-
-
-class ResourceDistricts(models.Model):
-    geom = models.MultiPolygonField(srid=3310, blank=True, null=True)
-    primco = models.IntegerField(db_column='PrimCo', blank=True, null=True)  # Field name made lowercase.
-    primno = models.IntegerField(db_column='PrimNo', blank=True, null=True)  # Field name made lowercase.
-    trinno = models.IntegerField(db_column='TrinNo', blank=True, null=True)  # Field name made lowercase.
-    label = models.ForeignKey(NwicCcdCrf, models.DO_NOTHING, db_column='Label', blank=True, null=True)  # Field name made lowercase.
-    otherid = models.CharField(db_column='OtherID', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    docsource = models.CharField(db_column='DocSource', max_length=25, blank=True, null=True)  # Field name made lowercase.
-    digsource = models.CharField(db_column='DigSource', max_length=25, blank=True, null=True)  # Field name made lowercase.
-    trinomial = models.CharField(db_column='Trinomial', max_length=11, blank=True, null=True)  # Field name made lowercase.
-    notes = models.CharField(db_column='Notes', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    hyperlink = models.CharField(db_column='Hyperlink', max_length=250, blank=True, null=True)  # Field name made lowercase.
-    shape_length = models.FloatField(db_column='SHAPE_Length', blank=True, null=True)  # Field name made lowercase.
-    shape_area = models.FloatField(db_column='SHAPE_Area', blank=True, null=True)  # Field name made lowercase.
-    confidential = models.CharField(db_column='Confidential', max_length=3, blank=True, null=True)  # Field name made lowercase.
-    digorg = models.CharField(db_column='DigOrg', max_length=255, blank=True, null=True)  # Field name made lowercase.
-
-    class Meta:
-        managed = False
-        db_table = 'resource_districts'
-
-
-class ResourceLines(models.Model):
-    geom = models.MultiLineStringField(srid=3310, blank=True, null=True)
-    primco = models.IntegerField(db_column='PrimCo', blank=True, null=True)  # Field name made lowercase.
-    primno = models.IntegerField(db_column='PrimNo', blank=True, null=True)  # Field name made lowercase.
-    trinno = models.CharField(db_column='TrinNo', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    label = models.ForeignKey(NwicCcdCrf, models.DO_NOTHING, db_column='Label', blank=True, null=True)  # Field name made lowercase.
-    otherid = models.CharField(db_column='OtherID', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    docsource = models.CharField(db_column='DocSource', max_length=25, blank=True, null=True)  # Field name made lowercase.
-    digsource = models.CharField(db_column='DigSource', max_length=25, blank=True, null=True)  # Field name made lowercase.
-    trinomial = models.CharField(db_column='Trinomial', max_length=20, blank=True, null=True)  # Field name made lowercase.
-    notes = models.CharField(db_column='Notes', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    hyperlink = models.CharField(db_column='Hyperlink', max_length=250, blank=True, null=True)  # Field name made lowercase.
-    shape_length = models.FloatField(db_column='SHAPE_Length', blank=True, null=True)  # Field name made lowercase.
-    confidential = models.CharField(db_column='Confidential', max_length=3, blank=True, null=True)  # Field name made lowercase.
-    digorg = models.CharField(db_column='DigOrg', max_length=255, blank=True, null=True)  # Field name made lowercase.
-
-    class Meta:
-        managed = False
-        db_table = 'resource_lines'
-
-
-class ResourcePoints(models.Model):
-    geom = models.PointField(srid=3310, blank=True, null=True)
-    primco = models.IntegerField(db_column='PrimCo', blank=True, null=True)  # Field name made lowercase.
-    primno = models.IntegerField(db_column='PrimNo', blank=True, null=True)  # Field name made lowercase.
-    trinno = models.CharField(db_column='TrinNo', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    label = models.ForeignKey(NwicCcdCrf, models.DO_NOTHING, db_column='Label', blank=True, null=True)  # Field name made lowercase.
-    otherid = models.CharField(db_column='OtherID', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    docsource = models.CharField(db_column='DocSource', max_length=25, blank=True, null=True)  # Field name made lowercase.
-    digsource = models.CharField(db_column='DigSource', max_length=25, blank=True, null=True)  # Field name made lowercase.
-    trinomial = models.CharField(db_column='Trinomial', max_length=20, blank=True, null=True)  # Field name made lowercase.
-    notes = models.CharField(db_column='Notes', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    hyperlink = models.CharField(db_column='Hyperlink', max_length=250, blank=True, null=True)  # Field name made lowercase.
-    confidential = models.CharField(db_column='Confidential', max_length=3, blank=True, null=True)  # Field name made lowercase.
-    digorg = models.CharField(db_column='DigOrg', max_length=255, blank=True, null=True)  # Field name made lowercase.
-
-    class Meta:
-        managed = False
-        db_table = 'resource_points'
-
-
-class ResourcePolys(models.Model):
-    geom = models.MultiPolygonField(srid=3310, blank=True, null=True)
-    primco = models.IntegerField(db_column='PrimCo', blank=True, null=True)  # Field name made lowercase.
-    primno = models.IntegerField(db_column='PrimNo', blank=True, null=True)  # Field name made lowercase.
-    trinno = models.IntegerField(db_column='TrinNo', blank=True, null=True)  # Field name made lowercase.
-    label = models.ForeignKey(NwicCcdCrf, models.DO_NOTHING, db_column='Label', blank=True, null=True)  # Field name made lowercase.
-    otherid = models.CharField(db_column='OtherID', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    docsource = models.CharField(db_column='DocSource', max_length=25, blank=True, null=True)  # Field name made lowercase.
-    digsource = models.CharField(db_column='DigSource', max_length=25, blank=True, null=True)  # Field name made lowercase.
-    trinomial = models.CharField(db_column='Trinomial', max_length=20, blank=True, null=True)  # Field name made lowercase.
-    notes = models.CharField(db_column='Notes', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    hyperlink = models.CharField(db_column='Hyperlink', max_length=250, blank=True, null=True)  # Field name made lowercase.
-    shape_length = models.FloatField(db_column='SHAPE_Length', blank=True, null=True)  # Field name made lowercase.
-    shape_area = models.FloatField(db_column='SHAPE_Area', blank=True, null=True)  # Field name made lowercase.
-    confidential = models.CharField(db_column='Confidential', max_length=3, blank=True, null=True)  # Field name made lowercase.
-    digorg = models.CharField(db_column='DigOrg', max_length=255, blank=True, null=True)  # Field name made lowercase.
-
-    class Meta:
-        managed = False
-        db_table = 'resource_polys'
-
-
-class ResourceRestricted(models.Model):
-    geom = models.MultiPolygonField(srid=3310, blank=True, null=True)
-    primco = models.IntegerField(db_column='PrimCo', blank=True, null=True)  # Field name made lowercase.
-    primno = models.IntegerField(db_column='PrimNo', blank=True, null=True)  # Field name made lowercase.
-    trinno = models.IntegerField(db_column='TrinNo', blank=True, null=True)  # Field name made lowercase.
-    label = models.ForeignKey(NwicCcdCrf, models.DO_NOTHING, db_column='Label', blank=True, null=True)  # Field name made lowercase.
-    otherid = models.CharField(db_column='OtherID', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    docsource = models.CharField(db_column='DocSource', max_length=25, blank=True, null=True)  # Field name made lowercase.
-    digsource = models.CharField(db_column='DigSource', max_length=25, blank=True, null=True)  # Field name made lowercase.
-    trinomial = models.CharField(db_column='Trinomial', max_length=20, blank=True, null=True)  # Field name made lowercase.
-    notes = models.CharField(db_column='Notes', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    hyperlink = models.CharField(db_column='Hyperlink', max_length=250, blank=True, null=True)  # Field name made lowercase.
-    shape_length = models.FloatField(db_column='SHAPE_Length', blank=True, null=True)  # Field name made lowercase.
-    shape_area = models.FloatField(db_column='SHAPE_Area', blank=True, null=True)  # Field name made lowercase.
-    confidential = models.CharField(db_column='Confidential', max_length=3, blank=True, null=True)  # Field name made lowercase.
-    digorg = models.CharField(db_column='DigOrg', max_length=255, blank=True, null=True)  # Field name made lowercase.
-
-    class Meta:
-        managed = False
-        db_table = 'resource_restricted'
-
-
-class Tblinvx(models.Model):
-    objectid = models.BigIntegerField(db_column='OBJECTID', blank=True, null=True)  # Field name made lowercase.
-    reportnum = models.CharField(db_column='ReportNum', max_length=10, blank=True, null=True)  # Field name made lowercase.
-    pnumber = models.CharField(db_column='PNumber', max_length=255, blank=True, null=True)  # Field name made lowercase.
-
-    class Meta:
-        managed = False
-        db_table = 'tblInvX'
 
 
 class Tblinventory(models.Model):
@@ -328,94 +44,7 @@ class Tblinventory(models.Model):
     shp = models.BooleanField(blank=True, null=True)
 
     class Meta:
-        managed = False
         db_table = 'tblInventory'
-
-
-class Tblinventoryaddr(models.Model):
-    reportnum = models.ForeignKey(Tblinventory, models.DO_NOTHING, db_column='ReportNum', blank=True, null=True)  # Field name made lowercase.
-    streetnumber = models.CharField(db_column='StreetNumber', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    streetname = models.CharField(db_column='StreetName', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    streetsuffix = models.CharField(db_column='StreetSuffix', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    streetdirection = models.CharField(db_column='StreetDirection', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    streetaddress = models.CharField(db_column='StreetAddress', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    city = models.CharField(db_column='City', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    apn = models.CharField(db_column='APN', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    zip = models.CharField(db_column='Zip', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    notes = models.CharField(db_column='Notes', max_length=255, blank=True, null=True)  # Field name made lowercase.
-
-    class Meta:
-        managed = False
-        db_table = 'tblInventoryAddr'
-
-
-class Tblinventoryauthor(models.Model):
-    reportnum = models.ForeignKey(Tblinventory, models.DO_NOTHING, db_column='ReportNum', blank=True, null=True)  # Field name made lowercase.
-    primaryauthor = models.CharField(db_column='PrimaryAuthor', max_length=500, blank=True, null=True)  # Field name made lowercase.
-    secondaryauthor = models.CharField(db_column='SecondaryAuthor', max_length=500, blank=True, null=True)  # Field name made lowercase.
-    multipleauthors = models.CharField(db_column='MultipleAuthors', max_length=1000, blank=True, null=True)  # Field name made lowercase.
-    docauthortext = models.CharField(db_column='DocAuthorText', max_length=500, blank=True, null=True)  # Field name made lowercase.
-
-    class Meta:
-        managed = False
-        db_table = 'tblInventoryAuthor'
-
-
-class Tblinventorycnty(models.Model):
-    reportnum = models.ForeignKey(Tblinventory, models.DO_NOTHING, db_column='ReportNum', blank=True, null=True)  # Field name made lowercase.
-    countyname = models.CharField(db_column='CountyName', max_length=500, blank=True, null=True)  # Field name made lowercase.
-
-    class Meta:
-        managed = False
-        db_table = 'tblInventoryCnty'
-
-
-class Tblinventoryident(models.Model):
-    reportnum = models.ForeignKey(Tblinventory, models.DO_NOTHING, db_column='ReportNum', blank=True, null=True)  # Field name made lowercase.
-    identifiertype = models.CharField(db_column='IdentifierType', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    identifier = models.CharField(db_column='Identifier', max_length=255, blank=True, null=True)  # Field name made lowercase.
-
-    class Meta:
-        managed = False
-        db_table = 'tblInventoryIdent'
-
-
-class Tblinventorymaps(models.Model):
-    reportnum = models.ForeignKey(Tblinventory, models.DO_NOTHING, db_column='ReportNum', blank=True, null=True)  # Field name made lowercase.
-    quadname = models.CharField(db_column='QuadName', max_length=500, blank=True, null=True)  # Field name made lowercase.
-
-    class Meta:
-        managed = False
-        db_table = 'tblInventoryMaps'
-
-
-class Tblinventorytype(models.Model):
-    reportnum = models.ForeignKey(Tblinventory, models.DO_NOTHING, db_column='ReportNum', blank=True, null=True)  # Field name made lowercase.
-    reporttype = models.CharField(db_column='ReportType', max_length=500, blank=True, null=True)  # Field name made lowercase.
-
-    class Meta:
-        managed = False
-        db_table = 'tblInventoryType'
-
-
-class Tblinventoryxref(models.Model):
-    reportnum = models.ForeignKey(Tblinventory, models.DO_NOTHING, db_column='ReportNum', blank=True, null=True)  # Field name made lowercase.
-    reportnum1 = models.CharField(db_column='ReportNum1', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    reltype = models.CharField(db_column='RelType', max_length=255, blank=True, null=True)  # Field name made lowercase.
-
-    class Meta:
-        managed = False
-        db_table = 'tblInventoryXRef'
-
-
-class Tblresx(models.Model):
-    snumber = models.CharField(db_column='SNumber', max_length=10, blank=True, null=True)  # Field name made lowercase.
-    pnumber = models.CharField(db_column='PNumber', max_length=255, blank=True, null=True)  # Field name made lowercase.
-
-    class Meta:
-        managed = False
-        db_table = 'tblResX'
-
 
 class Tblresource(models.Model):
     primco = models.IntegerField(db_column='PrimCo', blank=True, null=True)  # Field name made lowercase.
@@ -441,8 +70,359 @@ class Tblresource(models.Model):
     field = models.IntegerField(db_column='Field', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
-        managed = False
         db_table = 'tblResource'
+
+
+class ReportAprxloc(models.Model):
+    geom = models.MultiPolygonField(srid=3310, blank=True, null=True)
+    docco = models.IntegerField(db_column='DocCo', blank=True, null=True)  # Field name made lowercase.
+    docno = models.IntegerField(db_column='DocNo', blank=True, null=True)  # Field name made lowercase.
+    label = models.CharField(db_column='Label', max_length=8, blank=True, null=True)  # Field name made lowercase.
+    otherid = models.CharField(db_column='OtherID', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    docsource = models.CharField(db_column='DocSource', max_length=25, blank=True, null=True)  # Field name made lowercase.
+    digsource = models.CharField(db_column='DigSource', max_length=25, blank=True, null=True)  # Field name made lowercase.
+    reportnum = models.ForeignKey('Tblinventory', models.DO_NOTHING, db_column='ReportNum', blank=True, null=True)  # Field name made lowercase.
+    notes = models.CharField(db_column='Notes', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    confidential = models.CharField(db_column='Confidential', max_length=3, blank=True, null=True)  # Field name made lowercase.
+    hyperlink = models.CharField(db_column='Hyperlink', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    shape_length = models.FloatField(db_column='SHAPE_Length', blank=True, null=True)  # Field name made lowercase.
+    shape_area = models.FloatField(db_column='SHAPE_Area', blank=True, null=True)  # Field name made lowercase.
+    digorg = models.CharField(db_column='DigOrg', max_length=255, blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        db_table = 'report_aprxloc'
+
+
+class ReportCfmou(models.Model):
+    geom = models.MultiPolygonField(srid=3310, blank=True, null=True)
+    docco = models.IntegerField(db_column='DocCo', blank=True, null=True)  # Field name made lowercase.
+    docno = models.IntegerField(db_column='DocNo', blank=True, null=True)  # Field name made lowercase.
+    label = models.CharField(db_column='Label', max_length=8, blank=True, null=True)  # Field name made lowercase.
+    otherid = models.CharField(db_column='OtherID', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    docsource = models.CharField(db_column='DocSource', max_length=25, blank=True, null=True)  # Field name made lowercase.
+    digsource = models.CharField(db_column='DigSource', max_length=25, blank=True, null=True)  # Field name made lowercase.
+    reportnum = models.ForeignKey('Tblinventory', models.DO_NOTHING, db_column='ReportNum', blank=True, null=True)  # Field name made lowercase.
+    notes = models.CharField(db_column='Notes', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    hyperlink = models.CharField(db_column='Hyperlink', max_length=250, blank=True, null=True)  # Field name made lowercase.
+    shape_length = models.FloatField(db_column='SHAPE_Length', blank=True, null=True)  # Field name made lowercase.
+    shape_area = models.FloatField(db_column='SHAPE_Area', blank=True, null=True)  # Field name made lowercase.
+    digorg = models.CharField(db_column='DigOrg', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    confidential = models.CharField(db_column='Confidential', max_length=3, blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        db_table = 'report_cfmou'
+
+
+class ReportLines(models.Model):
+    geom = models.MultiLineStringField(srid=3310, blank=True, null=True)
+    docco = models.IntegerField(db_column='DocCo', blank=True, null=True)  # Field name made lowercase.
+    docno = models.IntegerField(db_column='DocNo', blank=True, null=True)  # Field name made lowercase.
+    label = models.CharField(db_column='Label', max_length=8, blank=True, null=True)  # Field name made lowercase.
+    otherid = models.CharField(db_column='OtherID', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    docsource = models.CharField(db_column='DocSource', max_length=25, blank=True, null=True)  # Field name made lowercase.
+    digsource = models.CharField(db_column='DigSource', max_length=25, blank=True, null=True)  # Field name made lowercase.
+    reportnum = models.ForeignKey('Tblinventory', models.DO_NOTHING, db_column='ReportNum', blank=True, null=True)  # Field name made lowercase.
+    notes = models.CharField(db_column='Notes', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    hyperlink = models.CharField(db_column='Hyperlink', max_length=250, blank=True, null=True)  # Field name made lowercase.
+    shape_length = models.FloatField(db_column='SHAPE_Length', blank=True, null=True)  # Field name made lowercase.
+    digorg = models.CharField(db_column='DigOrg', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    confidential = models.CharField(db_column='Confidential', max_length=3, blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        db_table = 'report_lines'
+
+
+class ReportOther(models.Model):
+    geom = models.MultiPolygonField(srid=3310, blank=True, null=True)
+    docco = models.IntegerField(db_column='DocCo', blank=True, null=True)  # Field name made lowercase.
+    docno = models.IntegerField(db_column='DocNo', blank=True, null=True)  # Field name made lowercase.
+    label = models.CharField(db_column='Label', max_length=8, blank=True, null=True)  # Field name made lowercase.
+    otherid = models.CharField(db_column='OtherID', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    docsource = models.CharField(db_column='DocSource', max_length=25, blank=True, null=True)  # Field name made lowercase.
+    digsource = models.CharField(db_column='DigSource', max_length=25, blank=True, null=True)  # Field name made lowercase.
+    reportnum = models.ForeignKey('Tblinventory', models.DO_NOTHING, db_column='ReportNum', blank=True, null=True)  # Field name made lowercase.
+    notes = models.CharField(db_column='Notes', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    hyperlink = models.CharField(db_column='Hyperlink', max_length=250, blank=True, null=True)  # Field name made lowercase.
+    shape_length = models.FloatField(db_column='Shape_Length', blank=True, null=True)  # Field name made lowercase.
+    shape_area = models.FloatField(db_column='Shape_Area', blank=True, null=True)  # Field name made lowercase.
+    digorg = models.CharField(db_column='DigOrg', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    confidential = models.CharField(db_column='Confidential', max_length=3, blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        db_table = 'report_other'
+
+
+class ReportPoints(models.Model):
+    geom = models.PointField(srid=3310, blank=True, null=True)
+    docco = models.IntegerField(db_column='DocCo', blank=True, null=True)  # Field name made lowercase.
+    docno = models.IntegerField(db_column='DocNo', blank=True, null=True)  # Field name made lowercase.
+    label = models.CharField(db_column='Label', max_length=8, blank=True, null=True)  # Field name made lowercase.
+    otherid = models.CharField(db_column='OtherID', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    docsource = models.CharField(db_column='DocSource', max_length=25, blank=True, null=True)  # Field name made lowercase.
+    digsource = models.CharField(db_column='DigSource', max_length=25, blank=True, null=True)  # Field name made lowercase.
+    reportnum = models.ForeignKey('Tblinventory', models.DO_NOTHING, db_column='ReportNum', blank=True, null=True)  # Field name made lowercase.
+    notes = models.CharField(db_column='Notes', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    hyperlink = models.CharField(db_column='Hyperlink', max_length=250, blank=True, null=True)  # Field name made lowercase.
+    digorg = models.CharField(db_column='DigOrg', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    confidential = models.CharField(db_column='Confidential', max_length=3, blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        db_table = 'report_points'
+
+
+class ReportPolys(models.Model):
+    geom = models.MultiPolygonField(srid=3310, blank=True, null=True)
+    docco = models.IntegerField(db_column='DocCo', blank=True, null=True)  # Field name made lowercase.
+    docno = models.IntegerField(db_column='DocNo', blank=True, null=True)  # Field name made lowercase.
+    label = models.CharField(db_column='Label', max_length=8, blank=True, null=True)  # Field name made lowercase.
+    otherid = models.CharField(db_column='OtherID', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    docsource = models.CharField(db_column='DocSource', max_length=25, blank=True, null=True)  # Field name made lowercase.
+    digsource = models.CharField(db_column='DigSource', max_length=25, blank=True, null=True)  # Field name made lowercase.
+    reportnum = models.ForeignKey('Tblinventory', models.DO_NOTHING, db_column='ReportNum', blank=True, null=True)  # Field name made lowercase.
+    notes = models.CharField(db_column='Notes', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    hyperlink = models.CharField(db_column='Hyperlink', max_length=250, blank=True, null=True)  # Field name made lowercase.
+    shape_length = models.FloatField(db_column='Shape_Length', blank=True, null=True)  # Field name made lowercase.
+    shape_area = models.FloatField(db_column='Shape_Area', blank=True, null=True)  # Field name made lowercase.
+    digorg = models.CharField(db_column='DigOrg', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    confidential = models.CharField(db_column='Confidential', max_length=3, blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        db_table = 'report_polys'
+
+
+class ReportRestricted(models.Model):
+    geom = models.MultiPolygonField(srid=3310, blank=True, null=True)
+    docco = models.IntegerField(db_column='DocCo', blank=True, null=True)  # Field name made lowercase.
+    docno = models.IntegerField(db_column='DocNo', blank=True, null=True)  # Field name made lowercase.
+    label = models.CharField(db_column='Label', max_length=8, blank=True, null=True)  # Field name made lowercase.
+    otherid = models.CharField(db_column='OtherID', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    docsource = models.CharField(db_column='DocSource', max_length=25, blank=True, null=True)  # Field name made lowercase.
+    digsource = models.CharField(db_column='DigSource', max_length=25, blank=True, null=True)  # Field name made lowercase.
+    reportnum = models.ForeignKey('Tblinventory', models.DO_NOTHING, db_column='ReportNum', blank=True, null=True)  # Field name made lowercase.
+    notes = models.CharField(db_column='Notes', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    hyperlink = models.CharField(db_column='Hyperlink', max_length=250, blank=True, null=True)  # Field name made lowercase.
+    shape_length = models.FloatField(db_column='SHAPE_Length', blank=True, null=True)  # Field name made lowercase.
+    shape_area = models.FloatField(db_column='SHAPE_Area', blank=True, null=True)  # Field name made lowercase.
+    digorg = models.CharField(db_column='DigOrg', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    confidential = models.CharField(db_column='Confidential', max_length=3, blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        db_table = 'report_restricted'
+
+
+class ResourceAprxloc(models.Model):
+    geom = models.MultiPolygonField(srid=3310, blank=True, null=True)
+    primco = models.IntegerField(db_column='PrimCo', blank=True, null=True)  # Field name made lowercase.
+    primno = models.IntegerField(db_column='PrimNo', blank=True, null=True)  # Field name made lowercase.
+    trinno = models.IntegerField(db_column='TrinNo', blank=True, null=True)  # Field name made lowercase.
+    label = models.ForeignKey(NwicCcdCrf, models.DO_NOTHING, db_column='Label', blank=True, null=True)  # Field name made lowercase.
+    otherid = models.CharField(db_column='OtherID', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    docsource = models.CharField(db_column='DocSource', max_length=1, blank=True, null=True)  # Field name made lowercase.
+    digsource = models.CharField(db_column='DigSource', max_length=1, blank=True, null=True)  # Field name made lowercase.
+    trinomial = models.CharField(db_column='Trinomial', max_length=11, blank=True, null=True)  # Field name made lowercase.
+    notes = models.CharField(db_column='Notes', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    hyperlink = models.CharField(db_column='Hyperlink', max_length=250, blank=True, null=True)  # Field name made lowercase.
+    shape_length = models.FloatField(db_column='SHAPE_Length', blank=True, null=True)  # Field name made lowercase.
+    shape_area = models.FloatField(db_column='SHAPE_Area', blank=True, null=True)  # Field name made lowercase.
+    digorg = models.CharField(db_column='DigOrg', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    confidential = models.CharField(db_column='Confidential', max_length=3, blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        db_table = 'resource_aprxloc'
+
+
+class ResourceDistricts(models.Model):
+    geom = models.MultiPolygonField(srid=3310, blank=True, null=True)
+    primco = models.IntegerField(db_column='PrimCo', blank=True, null=True)  # Field name made lowercase.
+    primno = models.IntegerField(db_column='PrimNo', blank=True, null=True)  # Field name made lowercase.
+    trinno = models.IntegerField(db_column='TrinNo', blank=True, null=True)  # Field name made lowercase.
+    label = models.ForeignKey(NwicCcdCrf, models.DO_NOTHING, db_column='Label', blank=True, null=True)  # Field name made lowercase.
+    otherid = models.CharField(db_column='OtherID', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    docsource = models.CharField(db_column='DocSource', max_length=25, blank=True, null=True)  # Field name made lowercase.
+    digsource = models.CharField(db_column='DigSource', max_length=25, blank=True, null=True)  # Field name made lowercase.
+    trinomial = models.CharField(db_column='Trinomial', max_length=11, blank=True, null=True)  # Field name made lowercase.
+    notes = models.CharField(db_column='Notes', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    hyperlink = models.CharField(db_column='Hyperlink', max_length=250, blank=True, null=True)  # Field name made lowercase.
+    shape_length = models.FloatField(db_column='SHAPE_Length', blank=True, null=True)  # Field name made lowercase.
+    shape_area = models.FloatField(db_column='SHAPE_Area', blank=True, null=True)  # Field name made lowercase.
+    confidential = models.CharField(db_column='Confidential', max_length=3, blank=True, null=True)  # Field name made lowercase.
+    digorg = models.CharField(db_column='DigOrg', max_length=255, blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        db_table = 'resource_districts'
+
+
+class ResourceLines(models.Model):
+    geom = models.MultiLineStringField(srid=3310, blank=True, null=True)
+    primco = models.IntegerField(db_column='PrimCo', blank=True, null=True)  # Field name made lowercase.
+    primno = models.IntegerField(db_column='PrimNo', blank=True, null=True)  # Field name made lowercase.
+    trinno = models.CharField(db_column='TrinNo', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    label = models.ForeignKey(NwicCcdCrf, models.DO_NOTHING, db_column='Label', blank=True, null=True)  # Field name made lowercase.
+    otherid = models.CharField(db_column='OtherID', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    docsource = models.CharField(db_column='DocSource', max_length=25, blank=True, null=True)  # Field name made lowercase.
+    digsource = models.CharField(db_column='DigSource', max_length=25, blank=True, null=True)  # Field name made lowercase.
+    trinomial = models.CharField(db_column='Trinomial', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    notes = models.CharField(db_column='Notes', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    hyperlink = models.CharField(db_column='Hyperlink', max_length=250, blank=True, null=True)  # Field name made lowercase.
+    shape_length = models.FloatField(db_column='SHAPE_Length', blank=True, null=True)  # Field name made lowercase.
+    confidential = models.CharField(db_column='Confidential', max_length=3, blank=True, null=True)  # Field name made lowercase.
+    digorg = models.CharField(db_column='DigOrg', max_length=255, blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        db_table = 'resource_lines'
+
+
+class ResourcePoints(models.Model):
+    geom = models.PointField(srid=3310, blank=True, null=True)
+    primco = models.IntegerField(db_column='PrimCo', blank=True, null=True)  # Field name made lowercase.
+    primno = models.IntegerField(db_column='PrimNo', blank=True, null=True)  # Field name made lowercase.
+    trinno = models.CharField(db_column='TrinNo', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    label = models.ForeignKey(NwicCcdCrf, models.DO_NOTHING, db_column='Label', blank=True, null=True)  # Field name made lowercase.
+    otherid = models.CharField(db_column='OtherID', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    docsource = models.CharField(db_column='DocSource', max_length=25, blank=True, null=True)  # Field name made lowercase.
+    digsource = models.CharField(db_column='DigSource', max_length=25, blank=True, null=True)  # Field name made lowercase.
+    trinomial = models.CharField(db_column='Trinomial', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    notes = models.CharField(db_column='Notes', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    hyperlink = models.CharField(db_column='Hyperlink', max_length=250, blank=True, null=True)  # Field name made lowercase.
+    confidential = models.CharField(db_column='Confidential', max_length=3, blank=True, null=True)  # Field name made lowercase.
+    digorg = models.CharField(db_column='DigOrg', max_length=255, blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        db_table = 'resource_points'
+
+
+class ResourcePolys(models.Model):
+    geom = models.MultiPolygonField(srid=3310, blank=True, null=True)
+    primco = models.IntegerField(db_column='PrimCo', blank=True, null=True)  # Field name made lowercase.
+    primno = models.IntegerField(db_column='PrimNo', blank=True, null=True)  # Field name made lowercase.
+    trinno = models.IntegerField(db_column='TrinNo', blank=True, null=True)  # Field name made lowercase.
+    label = models.ForeignKey(NwicCcdCrf, models.DO_NOTHING, db_column='Label', blank=True, null=True)  # Field name made lowercase.
+    otherid = models.CharField(db_column='OtherID', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    docsource = models.CharField(db_column='DocSource', max_length=25, blank=True, null=True)  # Field name made lowercase.
+    digsource = models.CharField(db_column='DigSource', max_length=25, blank=True, null=True)  # Field name made lowercase.
+    trinomial = models.CharField(db_column='Trinomial', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    notes = models.CharField(db_column='Notes', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    hyperlink = models.CharField(db_column='Hyperlink', max_length=250, blank=True, null=True)  # Field name made lowercase.
+    shape_length = models.FloatField(db_column='SHAPE_Length', blank=True, null=True)  # Field name made lowercase.
+    shape_area = models.FloatField(db_column='SHAPE_Area', blank=True, null=True)  # Field name made lowercase.
+    confidential = models.CharField(db_column='Confidential', max_length=3, blank=True, null=True)  # Field name made lowercase.
+    digorg = models.CharField(db_column='DigOrg', max_length=255, blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        db_table = 'resource_polys'
+
+
+class ResourceRestricted(models.Model):
+    geom = models.MultiPolygonField(srid=3310, blank=True, null=True)
+    primco = models.IntegerField(db_column='PrimCo', blank=True, null=True)  # Field name made lowercase.
+    primno = models.IntegerField(db_column='PrimNo', blank=True, null=True)  # Field name made lowercase.
+    trinno = models.IntegerField(db_column='TrinNo', blank=True, null=True)  # Field name made lowercase.
+    label = models.ForeignKey(NwicCcdCrf, models.DO_NOTHING, db_column='Label', blank=True, null=True)  # Field name made lowercase.
+    otherid = models.CharField(db_column='OtherID', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    docsource = models.CharField(db_column='DocSource', max_length=25, blank=True, null=True)  # Field name made lowercase.
+    digsource = models.CharField(db_column='DigSource', max_length=25, blank=True, null=True)  # Field name made lowercase.
+    trinomial = models.CharField(db_column='Trinomial', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    notes = models.CharField(db_column='Notes', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    hyperlink = models.CharField(db_column='Hyperlink', max_length=250, blank=True, null=True)  # Field name made lowercase.
+    shape_length = models.FloatField(db_column='SHAPE_Length', blank=True, null=True)  # Field name made lowercase.
+    shape_area = models.FloatField(db_column='SHAPE_Area', blank=True, null=True)  # Field name made lowercase.
+    confidential = models.CharField(db_column='Confidential', max_length=3, blank=True, null=True)  # Field name made lowercase.
+    digorg = models.CharField(db_column='DigOrg', max_length=255, blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        db_table = 'resource_restricted'
+
+
+class Tblinvx(models.Model):
+    objectid = models.BigIntegerField(db_column='OBJECTID', blank=True, null=True)  # Field name made lowercase.
+    reportnum = models.CharField(db_column='ReportNum', max_length=10, blank=True, null=True)  # Field name made lowercase.
+    pnumber = models.CharField(db_column='PNumber', max_length=255, blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        db_table = 'tblInvX'
+
+
+
+
+
+class Tblinventoryaddr(models.Model):
+    reportnum = models.ForeignKey(Tblinventory, models.DO_NOTHING, db_column='ReportNum', blank=True, null=True)  # Field name made lowercase.
+    streetnumber = models.CharField(db_column='StreetNumber', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    streetname = models.CharField(db_column='StreetName', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    streetsuffix = models.CharField(db_column='StreetSuffix', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    streetdirection = models.CharField(db_column='StreetDirection', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    streetaddress = models.CharField(db_column='StreetAddress', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    city = models.CharField(db_column='City', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    apn = models.CharField(db_column='APN', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    zip = models.CharField(db_column='Zip', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    notes = models.CharField(db_column='Notes', max_length=255, blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        db_table = 'tblInventoryAddr'
+
+
+class Tblinventoryauthor(models.Model):
+    reportnum = models.ForeignKey(Tblinventory, models.DO_NOTHING, db_column='ReportNum', blank=True, null=True)  # Field name made lowercase.
+    primaryauthor = models.CharField(db_column='PrimaryAuthor', max_length=500, blank=True, null=True)  # Field name made lowercase.
+    secondaryauthor = models.CharField(db_column='SecondaryAuthor', max_length=500, blank=True, null=True)  # Field name made lowercase.
+    multipleauthors = models.CharField(db_column='MultipleAuthors', max_length=1000, blank=True, null=True)  # Field name made lowercase.
+    docauthortext = models.CharField(db_column='DocAuthorText', max_length=500, blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        db_table = 'tblInventoryAuthor'
+
+
+class Tblinventorycnty(models.Model):
+    reportnum = models.ForeignKey(Tblinventory, models.DO_NOTHING, db_column='ReportNum', blank=True, null=True)  # Field name made lowercase.
+    countyname = models.CharField(db_column='CountyName', max_length=500, blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        db_table = 'tblInventoryCnty'
+
+
+class Tblinventoryident(models.Model):
+    reportnum = models.ForeignKey(Tblinventory, models.DO_NOTHING, db_column='ReportNum', blank=True, null=True)  # Field name made lowercase.
+    identifiertype = models.CharField(db_column='IdentifierType', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    identifier = models.CharField(db_column='Identifier', max_length=255, blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        db_table = 'tblInventoryIdent'
+
+
+class Tblinventorymaps(models.Model):
+    reportnum = models.ForeignKey(Tblinventory, models.DO_NOTHING, db_column='ReportNum', blank=True, null=True)  # Field name made lowercase.
+    quadname = models.CharField(db_column='QuadName', max_length=500, blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        db_table = 'tblInventoryMaps'
+
+
+class Tblinventorytype(models.Model):
+    reportnum = models.ForeignKey(Tblinventory, models.DO_NOTHING, db_column='ReportNum', blank=True, null=True)  # Field name made lowercase.
+    reporttype = models.CharField(db_column='ReportType', max_length=500, blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        db_table = 'tblInventoryType'
+
+
+class Tblinventoryxref(models.Model):
+    reportnum = models.ForeignKey(Tblinventory, models.DO_NOTHING, db_column='ReportNum', blank=True, null=True)  # Field name made lowercase.
+    reportnum1 = models.CharField(db_column='ReportNum1', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    reltype = models.CharField(db_column='RelType', max_length=255, blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        db_table = 'tblInventoryXRef'
+
+
+class Tblresx(models.Model):
+    snumber = models.CharField(db_column='SNumber', max_length=10, blank=True, null=True)  # Field name made lowercase.
+    pnumber = models.CharField(db_column='PNumber', max_length=255, blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        db_table = 'tblResX'
+
+
+
 
 
 class Tblresourceaddr(models.Model):
@@ -458,7 +438,6 @@ class Tblresourceaddr(models.Model):
     notes = models.CharField(db_column='Notes', max_length=1000, blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
-        managed = False
         db_table = 'tblResourceAddr'
 
 
@@ -468,7 +447,6 @@ class Tblresourceattrib(models.Model):
     attribnotes = models.CharField(db_column='AttribNotes', max_length=1000, blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
-        managed = False
         db_table = 'tblResourceAttrib'
 
 
@@ -480,7 +458,6 @@ class Tblresourceevents(models.Model):
     recnote = models.CharField(db_column='RecNote', max_length=255, blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
-        managed = False
         db_table = 'tblResourceEvents'
 
 
@@ -490,7 +467,7 @@ class Tblresourceident(models.Model):
     identifier = models.CharField(db_column='Identifier', max_length=255, blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
-        managed = False
+        
         db_table = 'tblResourceIdent'
 
 
@@ -499,7 +476,7 @@ class Tblresourcemaps(models.Model):
     quadname = models.CharField(db_column='QuadName', max_length=255, blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
-        managed = False
+        
         db_table = 'tblResourceMaps'
 
 
@@ -517,7 +494,7 @@ class Tblresourceplss(models.Model):
     notes = models.CharField(db_column='Notes', max_length=1000, blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
-        managed = False
+        
         db_table = 'tblResourcePLSS'
 
 
@@ -530,7 +507,7 @@ class Tblresourceutm(models.Model):
     utmtext = models.CharField(db_column='UTMText', max_length=1000, blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
-        managed = False
+        
         db_table = 'tblResourceUTM'
 
 
@@ -540,5 +517,5 @@ class Tblresourcexref(models.Model):
     reltype = models.CharField(db_column='RelType', max_length=255, blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
-        managed = False
+        
         db_table = 'tblResourceXRef'
