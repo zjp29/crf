@@ -9,7 +9,7 @@ from django.contrib.gis.db import models
 
 
 class NwicCcdCrf(models.Model):
-    pnumber = models.CharField(max_length=11)
+    pnumber = models.CharField(max_length=11, unique=True)
     status = models.TextField(blank=True, null=True)
     disclosure = models.TextField(blank=True, null=True)
     shp = models.BooleanField(blank=True, null=True)
@@ -21,11 +21,10 @@ class NwicCcdCrf(models.Model):
     class Meta:
         db_table = 'nwic_ccd_crf'
 
-
 class Tblinventory(models.Model):
     docno = models.CharField(db_column='DocNo', max_length=255, blank=True, null=True)  # Field name made lowercase.
     label = models.CharField(db_column='Label', max_length=20, blank=True, null=True)  # Field name made lowercase.
-    reportnum = models.CharField(db_column='ReportNum', primary_key=True, max_length=10)  # Field name made lowercase.
+    reportnum = models.CharField(db_column='ReportNum', max_length=10, unique=True)  # Field name made lowercase.
     olddocno = models.CharField(db_column='OldDocNo', max_length=255, blank=True, null=True)  # Field name made lowercase.
     status = models.CharField(db_column='Status', max_length=255, blank=True, null=True)  # Field name made lowercase.
     inventorysize = models.CharField(db_column='InventorySize', max_length=255, blank=True, null=True)  # Field name made lowercase.
@@ -42,11 +41,13 @@ class Tblinventory(models.Model):
     notes = models.CharField(db_column='Notes', max_length=1000, blank=True, null=True)  # Field name made lowercase.
     pdf = models.BooleanField(blank=True, null=True)
     shp = models.BooleanField(blank=True, null=True)
+    id = models.AutoField(primary_key=True)
 
     class Meta:
         db_table = 'tblInventory'
 
 class Tblresource(models.Model):
+    id = models.AutoField(primary_key=True)
     primco = models.IntegerField(db_column='PrimCo', blank=True, null=True)  # Field name made lowercase.
     primno = models.IntegerField(db_column='PrimNo', blank=True, null=True)  # Field name made lowercase.
     pnumber = models.ForeignKey(NwicCcdCrf, models.DO_NOTHING, db_column='PNumber', blank=True, null=True)  # Field name made lowercase.
@@ -72,8 +73,8 @@ class Tblresource(models.Model):
     class Meta:
         db_table = 'tblResource'
 
-
 class ReportAprxloc(models.Model):
+    id = models.AutoField(primary_key=True)
     geom = models.MultiPolygonField(srid=3310, blank=True, null=True)
     docco = models.IntegerField(db_column='DocCo', blank=True, null=True)  # Field name made lowercase.
     docno = models.IntegerField(db_column='DocNo', blank=True, null=True)  # Field name made lowercase.
@@ -92,8 +93,8 @@ class ReportAprxloc(models.Model):
     class Meta:
         db_table = 'report_aprxloc'
 
-
 class ReportCfmou(models.Model):
+    id = models.AutoField(primary_key=True)
     geom = models.MultiPolygonField(srid=3310, blank=True, null=True)
     docco = models.IntegerField(db_column='DocCo', blank=True, null=True)  # Field name made lowercase.
     docno = models.IntegerField(db_column='DocNo', blank=True, null=True)  # Field name made lowercase.
@@ -112,8 +113,8 @@ class ReportCfmou(models.Model):
     class Meta:
         db_table = 'report_cfmou'
 
-
 class ReportLines(models.Model):
+    id = models.AutoField(primary_key=True)
     geom = models.MultiLineStringField(srid=3310, blank=True, null=True)
     docco = models.IntegerField(db_column='DocCo', blank=True, null=True)  # Field name made lowercase.
     docno = models.IntegerField(db_column='DocNo', blank=True, null=True)  # Field name made lowercase.
@@ -131,8 +132,8 @@ class ReportLines(models.Model):
     class Meta:
         db_table = 'report_lines'
 
-
 class ReportOther(models.Model):
+    id = models.AutoField(primary_key=True)
     geom = models.MultiPolygonField(srid=3310, blank=True, null=True)
     docco = models.IntegerField(db_column='DocCo', blank=True, null=True)  # Field name made lowercase.
     docno = models.IntegerField(db_column='DocNo', blank=True, null=True)  # Field name made lowercase.
@@ -151,8 +152,8 @@ class ReportOther(models.Model):
     class Meta:
         db_table = 'report_other'
 
-
 class ReportPoints(models.Model):
+    id = models.AutoField(primary_key=True)
     geom = models.PointField(srid=3310, blank=True, null=True)
     docco = models.IntegerField(db_column='DocCo', blank=True, null=True)  # Field name made lowercase.
     docno = models.IntegerField(db_column='DocNo', blank=True, null=True)  # Field name made lowercase.
@@ -169,8 +170,8 @@ class ReportPoints(models.Model):
     class Meta:
         db_table = 'report_points'
 
-
 class ReportPolys(models.Model):
+    id = models.AutoField(primary_key=True)
     geom = models.MultiPolygonField(srid=3310, blank=True, null=True)
     docco = models.IntegerField(db_column='DocCo', blank=True, null=True)  # Field name made lowercase.
     docno = models.IntegerField(db_column='DocNo', blank=True, null=True)  # Field name made lowercase.
@@ -189,8 +190,8 @@ class ReportPolys(models.Model):
     class Meta:
         db_table = 'report_polys'
 
-
 class ReportRestricted(models.Model):
+    id = models.AutoField(primary_key=True)
     geom = models.MultiPolygonField(srid=3310, blank=True, null=True)
     docco = models.IntegerField(db_column='DocCo', blank=True, null=True)  # Field name made lowercase.
     docno = models.IntegerField(db_column='DocNo', blank=True, null=True)  # Field name made lowercase.
@@ -209,8 +210,8 @@ class ReportRestricted(models.Model):
     class Meta:
         db_table = 'report_restricted'
 
-
 class ResourceAprxloc(models.Model):
+    id = models.AutoField(primary_key=True)
     geom = models.MultiPolygonField(srid=3310, blank=True, null=True)
     primco = models.IntegerField(db_column='PrimCo', blank=True, null=True)  # Field name made lowercase.
     primno = models.IntegerField(db_column='PrimNo', blank=True, null=True)  # Field name made lowercase.
@@ -230,8 +231,8 @@ class ResourceAprxloc(models.Model):
     class Meta:
         db_table = 'resource_aprxloc'
 
-
 class ResourceDistricts(models.Model):
+    id = models.AutoField(primary_key=True)
     geom = models.MultiPolygonField(srid=3310, blank=True, null=True)
     primco = models.IntegerField(db_column='PrimCo', blank=True, null=True)  # Field name made lowercase.
     primno = models.IntegerField(db_column='PrimNo', blank=True, null=True)  # Field name made lowercase.
@@ -251,8 +252,8 @@ class ResourceDistricts(models.Model):
     class Meta:
         db_table = 'resource_districts'
 
-
 class ResourceLines(models.Model):
+    id = models.AutoField(primary_key=True)
     geom = models.MultiLineStringField(srid=3310, blank=True, null=True)
     primco = models.IntegerField(db_column='PrimCo', blank=True, null=True)  # Field name made lowercase.
     primno = models.IntegerField(db_column='PrimNo', blank=True, null=True)  # Field name made lowercase.
@@ -271,8 +272,8 @@ class ResourceLines(models.Model):
     class Meta:
         db_table = 'resource_lines'
 
-
 class ResourcePoints(models.Model):
+    id = models.AutoField(primary_key=True)
     geom = models.PointField(srid=3310, blank=True, null=True)
     primco = models.IntegerField(db_column='PrimCo', blank=True, null=True)  # Field name made lowercase.
     primno = models.IntegerField(db_column='PrimNo', blank=True, null=True)  # Field name made lowercase.
@@ -290,8 +291,8 @@ class ResourcePoints(models.Model):
     class Meta:
         db_table = 'resource_points'
 
-
 class ResourcePolys(models.Model):
+    id = models.AutoField(primary_key=True)
     geom = models.MultiPolygonField(srid=3310, blank=True, null=True)
     primco = models.IntegerField(db_column='PrimCo', blank=True, null=True)  # Field name made lowercase.
     primno = models.IntegerField(db_column='PrimNo', blank=True, null=True)  # Field name made lowercase.
@@ -311,8 +312,8 @@ class ResourcePolys(models.Model):
     class Meta:
         db_table = 'resource_polys'
 
-
 class ResourceRestricted(models.Model):
+    id = models.AutoField(primary_key=True)
     geom = models.MultiPolygonField(srid=3310, blank=True, null=True)
     primco = models.IntegerField(db_column='PrimCo', blank=True, null=True)  # Field name made lowercase.
     primno = models.IntegerField(db_column='PrimNo', blank=True, null=True)  # Field name made lowercase.
@@ -332,8 +333,8 @@ class ResourceRestricted(models.Model):
     class Meta:
         db_table = 'resource_restricted'
 
-
 class Tblinvx(models.Model):
+    id = models.AutoField(primary_key=True)
     objectid = models.BigIntegerField(db_column='OBJECTID', blank=True, null=True)  # Field name made lowercase.
     reportnum = models.CharField(db_column='ReportNum', max_length=10, blank=True, null=True)  # Field name made lowercase.
     pnumber = models.CharField(db_column='PNumber', max_length=255, blank=True, null=True)  # Field name made lowercase.
@@ -341,11 +342,8 @@ class Tblinvx(models.Model):
     class Meta:
         db_table = 'tblInvX'
 
-
-
-
-
 class Tblinventoryaddr(models.Model):
+    id = models.AutoField(primary_key=True)
     reportnum = models.ForeignKey(Tblinventory, models.DO_NOTHING, db_column='ReportNum', blank=True, null=True)  # Field name made lowercase.
     streetnumber = models.CharField(db_column='StreetNumber', max_length=255, blank=True, null=True)  # Field name made lowercase.
     streetname = models.CharField(db_column='StreetName', max_length=255, blank=True, null=True)  # Field name made lowercase.
@@ -360,8 +358,8 @@ class Tblinventoryaddr(models.Model):
     class Meta:
         db_table = 'tblInventoryAddr'
 
-
 class Tblinventoryauthor(models.Model):
+    id = models.AutoField(primary_key=True)
     reportnum = models.ForeignKey(Tblinventory, models.DO_NOTHING, db_column='ReportNum', blank=True, null=True)  # Field name made lowercase.
     primaryauthor = models.CharField(db_column='PrimaryAuthor', max_length=500, blank=True, null=True)  # Field name made lowercase.
     secondaryauthor = models.CharField(db_column='SecondaryAuthor', max_length=500, blank=True, null=True)  # Field name made lowercase.
@@ -371,16 +369,16 @@ class Tblinventoryauthor(models.Model):
     class Meta:
         db_table = 'tblInventoryAuthor'
 
-
 class Tblinventorycnty(models.Model):
+    id = models.AutoField(primary_key=True)
     reportnum = models.ForeignKey(Tblinventory, models.DO_NOTHING, db_column='ReportNum', blank=True, null=True)  # Field name made lowercase.
     countyname = models.CharField(db_column='CountyName', max_length=500, blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
         db_table = 'tblInventoryCnty'
 
-
 class Tblinventoryident(models.Model):
+    id = models.AutoField(primary_key=True)
     reportnum = models.ForeignKey(Tblinventory, models.DO_NOTHING, db_column='ReportNum', blank=True, null=True)  # Field name made lowercase.
     identifiertype = models.CharField(db_column='IdentifierType', max_length=255, blank=True, null=True)  # Field name made lowercase.
     identifier = models.CharField(db_column='Identifier', max_length=255, blank=True, null=True)  # Field name made lowercase.
@@ -388,24 +386,24 @@ class Tblinventoryident(models.Model):
     class Meta:
         db_table = 'tblInventoryIdent'
 
-
 class Tblinventorymaps(models.Model):
+    id = models.AutoField(primary_key=True)
     reportnum = models.ForeignKey(Tblinventory, models.DO_NOTHING, db_column='ReportNum', blank=True, null=True)  # Field name made lowercase.
     quadname = models.CharField(db_column='QuadName', max_length=500, blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
         db_table = 'tblInventoryMaps'
 
-
 class Tblinventorytype(models.Model):
+    id = models.AutoField(primary_key=True)
     reportnum = models.ForeignKey(Tblinventory, models.DO_NOTHING, db_column='ReportNum', blank=True, null=True)  # Field name made lowercase.
     reporttype = models.CharField(db_column='ReportType', max_length=500, blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
         db_table = 'tblInventoryType'
 
-
 class Tblinventoryxref(models.Model):
+    id = models.AutoField(primary_key=True)
     reportnum = models.ForeignKey(Tblinventory, models.DO_NOTHING, db_column='ReportNum', blank=True, null=True)  # Field name made lowercase.
     reportnum1 = models.CharField(db_column='ReportNum1', max_length=255, blank=True, null=True)  # Field name made lowercase.
     reltype = models.CharField(db_column='RelType', max_length=255, blank=True, null=True)  # Field name made lowercase.
@@ -413,19 +411,16 @@ class Tblinventoryxref(models.Model):
     class Meta:
         db_table = 'tblInventoryXRef'
 
-
 class Tblresx(models.Model):
+    id = models.AutoField(primary_key=True)
     snumber = models.CharField(db_column='SNumber', max_length=10, blank=True, null=True)  # Field name made lowercase.
     pnumber = models.CharField(db_column='PNumber', max_length=255, blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
         db_table = 'tblResX'
 
-
-
-
-
 class Tblresourceaddr(models.Model):
+    id = models.AutoField(primary_key=True)
     pnumber = models.ForeignKey(NwicCcdCrf, models.DO_NOTHING, db_column='PNumber', blank=True, null=True)  # Field name made lowercase.
     streetnumber = models.CharField(db_column='StreetNumber', max_length=255, blank=True, null=True)  # Field name made lowercase.
     streetname = models.CharField(db_column='StreetName', max_length=255, blank=True, null=True)  # Field name made lowercase.
@@ -440,8 +435,8 @@ class Tblresourceaddr(models.Model):
     class Meta:
         db_table = 'tblResourceAddr'
 
-
 class Tblresourceattrib(models.Model):
+    id = models.AutoField(primary_key=True)
     pnumber = models.ForeignKey(NwicCcdCrf, models.DO_NOTHING, db_column='PNumber', blank=True, null=True)  # Field name made lowercase.
     attribid = models.CharField(db_column='AttribID', max_length=255, blank=True, null=True)  # Field name made lowercase.
     attribnotes = models.CharField(db_column='AttribNotes', max_length=1000, blank=True, null=True)  # Field name made lowercase.
@@ -449,8 +444,8 @@ class Tblresourceattrib(models.Model):
     class Meta:
         db_table = 'tblResourceAttrib'
 
-
 class Tblresourceevents(models.Model):
+    id = models.AutoField(primary_key=True)
     pnumber = models.ForeignKey(NwicCcdCrf, models.DO_NOTHING, db_column='PNumber', blank=True, null=True)  # Field name made lowercase.
     recdate = models.CharField(db_column='RecDate', max_length=255, blank=True, null=True)  # Field name made lowercase.
     recorder = models.CharField(db_column='Recorder', max_length=255, blank=True, null=True)  # Field name made lowercase.
@@ -460,27 +455,25 @@ class Tblresourceevents(models.Model):
     class Meta:
         db_table = 'tblResourceEvents'
 
-
 class Tblresourceident(models.Model):
+    id = models.AutoField(primary_key=True)
     pnumber = models.ForeignKey(NwicCcdCrf, models.DO_NOTHING, db_column='PNumber', blank=True, null=True)  # Field name made lowercase.
     identifiertype = models.CharField(db_column='IdentifierType', max_length=255, blank=True, null=True)  # Field name made lowercase.
     identifier = models.CharField(db_column='Identifier', max_length=255, blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
-        
         db_table = 'tblResourceIdent'
 
-
 class Tblresourcemaps(models.Model):
+    id = models.AutoField(primary_key=True)
     pnumber = models.ForeignKey(NwicCcdCrf, models.DO_NOTHING, db_column='PNumber', blank=True, null=True)  # Field name made lowercase.
     quadname = models.CharField(db_column='QuadName', max_length=255, blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
-        
         db_table = 'tblResourceMaps'
 
-
 class Tblresourceplss(models.Model):
+    id = models.AutoField(primary_key=True)
     pnumber = models.ForeignKey(NwicCcdCrf, models.DO_NOTHING, db_column='PNumber', blank=True, null=True)  # Field name made lowercase.
     basemer = models.CharField(db_column='BaseMer', max_length=500, blank=True, null=True)  # Field name made lowercase.
     tnumber = models.CharField(db_column='TNumber', max_length=500, blank=True, null=True)  # Field name made lowercase.
@@ -494,11 +487,10 @@ class Tblresourceplss(models.Model):
     notes = models.CharField(db_column='Notes', max_length=1000, blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
-        
         db_table = 'tblResourcePLSS'
 
-
 class Tblresourceutm(models.Model):
+    id = models.AutoField(primary_key=True)
     pnumber = models.ForeignKey(NwicCcdCrf, models.DO_NOTHING, db_column='PNumber', blank=True, null=True)  # Field name made lowercase.
     utmdatum = models.CharField(db_column='UTMDatum', max_length=255, blank=True, null=True)  # Field name made lowercase.
     utmzone = models.CharField(db_column='UTMZone', max_length=255, blank=True, null=True)  # Field name made lowercase.
@@ -507,15 +499,13 @@ class Tblresourceutm(models.Model):
     utmtext = models.CharField(db_column='UTMText', max_length=1000, blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
-        
         db_table = 'tblResourceUTM'
 
-
 class Tblresourcexref(models.Model):
+    id = models.AutoField(primary_key=True)
     pnumber = models.ForeignKey(NwicCcdCrf, models.DO_NOTHING, db_column='PNumber', blank=True, null=True)  # Field name made lowercase.
     pnumber1 = models.CharField(db_column='PNumber1', max_length=255, blank=True, null=True)  # Field name made lowercase.
     reltype = models.CharField(db_column='RelType', max_length=255, blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
-        
         db_table = 'tblResourceXRef'

@@ -9,4 +9,3 @@ admin.site.register(ResourceLines, admin.GeoModelAdmin)
 admin.site.register(ReportLines, admin.GeoModelAdmin)
 
 admin.site.site_header = 'CRF Administration'
-
